@@ -1,6 +1,7 @@
 #ifndef queueh
 #define queueh 1
-typedef int Data;
+
+#include "queue_data.h"
 
 typedef struct Node {
     Data value;

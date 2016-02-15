@@ -3,7 +3,8 @@
 #include "queue_codes.h"
 #include "queue.h"
 
-void printMessage(int response) {
+void printMessage(int response)
+{
     if (response == 0) {
         return;
     }
@@ -32,7 +33,27 @@ void printMessage(int response) {
 
 }
 
-void mapQueue(Queue* queue) {
+void printFull(int status)
+{
+    if (status == 0) {
+        printf("Nepilna\n");
+    } else {
+        printf("Pilna\n");
+    }
+}
+
+void printEmpty(int status)
+{
+    if (status == 0) {
+        printf("Netuščia\n");
+    } else {
+        printf("Tuščia\n");
+    }
+}
+
+
+void mapQueue(Queue* queue)
+{
     if (queue == NULL){
         printMessage(QUEUE_NOT_CREATED);
         return;

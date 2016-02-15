@@ -88,28 +88,34 @@ int pushQueue(Queue* queue, int value, int priority) {
         queue->first = node;
         queue->last = node;
     } else {
-        Node* temp = queue->last;
+        //go from front to back
+        Node* temp = queue->first;
         int set = 0;
         while (temp != NULL) {
-            if (temp->priority >= node->priority) {
-                node->previous = temp->previous;
-                node->next = temp;
+            //find element with lower priority
+            if (temp->priority < node->priority) {
 
+                //if element being moved is not first in the list, inform next element
+                //else set list first element to new one
                 if (temp->previous) {
                     temp->previous->next = node;
+                    node->previous = temp->previous;
                 } else {
                     queue->first = node;
                 }
 
                 temp->previous = node;
+                node->next = temp;
 
                 set = 1;
                 break;
             }
+            temp = temp->next;
         }
 
         if (!set) {
             node->previous = queue->last;
+            queue->last->next = node;
             queue->last = node;
         }
     }
@@ -122,4 +128,19 @@ int pushQueue(Queue* queue, int value, int priority) {
 // Check if queue is empty (not created or no elements inside it)
 int isEmptyQueue(Queue* queue) {
     return queue == NULL || queue->length == 0;
+}
+
+int isFullQueue(Queue* queue) {
+    //Not created so it is empty
+    if (queue == NULL) {
+        return 0;
+    }
+
+    Node* node = (Node*) calloc(1, sizeof(Node));
+
+    int full = node == NULL ? 1 : 0;
+
+    free(node);
+    //if its impossible to create node we can guess that queue is full
+    return full;
 }
