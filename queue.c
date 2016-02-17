@@ -9,12 +9,15 @@ int initQueue(Queue** queue)
         return QUEUE_NOT_CREATED;
     }
 
+    (*queue)->init = 1;
+
     return 0;
 }
 
 int destroyQueue(Queue** queue)
 {
-    if (*queue == NULL) {
+
+    if (*queue == NULL || (*queue)->init != 1) {
         return QUEUE_DESTROYED;
     }
 

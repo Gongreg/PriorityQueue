@@ -1,4 +1,4 @@
 #ifndef queuedatah
-#define queuedatah 1
+#define queuedatah
 typedef int Data;
 #endif

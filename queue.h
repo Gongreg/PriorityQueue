@@ -1,5 +1,7 @@
+//Priority queue - Gytis Vinclovas II grupe
+
 #ifndef queueh
-#define queueh 1
+#define queueh
 
 #include "queue_data.h"
 
@@ -14,8 +16,10 @@ typedef struct Queue {
     struct Node* first;
     struct Node* last;
     int length;
+    int init;
 } Queue;
 
+//Error codes are sent back as result. Check queue_codes.h for help.
 int initQueue(Queue** queue);
 int destroyQueue(Queue** queue);
 int pushQueue(Queue* queue, Data value, int priority);
